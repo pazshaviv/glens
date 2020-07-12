@@ -7,11 +7,6 @@ import {Container, Content, ActionSheet} from 'native-base';
 import Loading from '../components/Loading';
 
 const MatchesScreen = ({navigation}) => {
-  // const MY_FAVORITES_IDS = [
-  //   '08ujbpGflLVEPDfCapg4J02x4pq1',
-  //   '0FlNACQYt0VpkYjMGChdGcisdjA2',
-  //   'JJYEqIQrKg53s33BrRDY7Abkez1',
-  // ];
   const [profiles, errorMessage] = useFeeds();
   const [actionSheet, setActionSheet] = useState({});
 
