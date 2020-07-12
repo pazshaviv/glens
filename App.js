@@ -1,5 +1,4 @@
 import 'react-native-gesture-handler';
-// import React, {useState} from 'react';
 import React, {useState, useEffect} from 'react';
 import {StyleSheet, SafeAreaView, Text} from 'react-native';
 import auth from '@react-native-firebase/auth';
@@ -9,7 +8,6 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {MenuProvider} from 'react-native-popup-menu';
 
-// import LoadingScreen from './src/screens/LoadingScreen';
 import LoginScreen from './src/screens/LoginScreen';
 import MainScreen from './src/screens/MainScreen';
 import MatchesScreen from './src/screens/MatchesScreen';
@@ -35,18 +33,11 @@ function App() {
 
   if (initializing) return null;
 
-  // if (!user) {
-  //   return navigation.navigate('Login');
-  // }
-
-  // return navigation.navigate('Main');
-
   return (
     <Root>
       <MenuProvider>
         <NavigationContainer>
           <Stack.Navigator screenOptions={{headerShown: false}}>
-            {/* <Stack.Screen name="Loading" component={LoadingScreen} /> */}
             {user ? (
               <>
                 <Stack.Screen name="Main" component={MainScreen} />

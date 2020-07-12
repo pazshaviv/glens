@@ -8,13 +8,10 @@ import {
   Image,
 } from 'react-native';
 import Swiper from 'react-native-deck-swiper';
-// import NavButtonIcon from '../components/NavButtonIcon';
 import OnlineSwitch from '../components/OnlineSwitch';
 import ProfileCard from '../components/ProfileCard';
 import useFeeds from '../hooks/useFeeds';
 import Loading from '../components/Loading';
-
-// import firestore from '@react-native-firebase/firestore';
 
 const Card = ({card}) => {
   return <ProfileCard card={card} />;
@@ -22,6 +19,10 @@ const Card = ({card}) => {
 
 const MainScreen = ({navigation}) => {
   const [profiles, errorMessage] = useFeeds();
+
+  function cardSwiped(){
+    console.log('swiper');
+  }    
 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: 'rgb(247,248,250)'}}>
@@ -52,7 +53,6 @@ const MainScreen = ({navigation}) => {
             cardIndex={0}
             renderCard={(card) => <Card card={card} />}
             marginTop={0}
-            // verticalSwipe={false}
             backgroundColor={'rgb(247,248,250)'}
             infinite
             disableTopSwipe
@@ -60,7 +60,7 @@ const MainScreen = ({navigation}) => {
             animateCardOpacity
             showSecondCard
             stackSize={2}
-            // stackScale={10}
+            onSwiped={cardSwiped}
           />
         </View>
       )}
