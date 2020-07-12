@@ -20,16 +20,10 @@ export default () => {
       const ref = firestore().collection('feeds').doc(uid);
       await ref.get().then((feedQuerySnapshot) => {
         let profilesUidsToDisplay = feedQuerySnapshot.data().feed;
-        console.log(
-          'profiles loaded from database: ' + profilesUidsToDisplay.length,
-        );
 
         getUsersFeed(profilesUidsToDisplay);
 
-        console.log('profilesarray length: ' + feed.length);
-        // setProfiles(profilesArray);
-        // console.log('profiles array length: ' + profiles.length);
-        // console.log(profiles);
+        setProfiles(profilesArray);
       });
     } catch (e) {
       setErrorMessage('Something went wrong');
@@ -44,7 +38,6 @@ export default () => {
         .doc(profilesUidsToDisplay[i])
         .get()
         .then((profileQuerySnapshot) => {
-          // console.log(profileQuerySnapshot);
           profilesArray.push({
             uid: profileQuerySnapshot.id,
             ...profileQuerySnapshot.data(),

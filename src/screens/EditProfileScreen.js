@@ -1,7 +1,6 @@
-import React, {useState, useContext, useEffect} from 'react';
-import {StyleSheet, Text, SafeAreaView, View, ScrollView} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {StyleSheet, SafeAreaView, View, ScrollView} from 'react-native';
 import DefaultScreenHeader from '../components/DefaultScreenHeader';
-import Moment from 'moment';
 import Loading from '../components/Loading';
 import ImageUploadSquare from '../components/ImageUploadSquare';
 import {ActionSheet, Root} from 'native-base';
@@ -14,9 +13,7 @@ const EditProfileScreen = ({navigation}) => {
   const [currentUserProfileData, setCurrentUserProfileData] = useState({
     name: '',
   });
-  // const [firstName, setFirstName] = useState('');
   const [photosUrls, setPhotosUrls] = useState([]);
-  // const [dateOfBirth, setDateOfBirth] = useState('');
 
   useEffect(() => {
     const uid = auth().currentUser.uid;
@@ -57,8 +54,8 @@ const EditProfileScreen = ({navigation}) => {
       (buttonIndex) => {
         switch (buttonIndex) {
           case 0:
-            console.log('make profile photo');
             // makeProfilePhoto();
+            console.log('make profile photo');
             break;
           case 1:
             console.log('delete photo');
@@ -129,19 +126,6 @@ const EditProfileScreen = ({navigation}) => {
       });
   }
 
-  // function getFirstWord(str) {
-  //   let spaceIndex = str.indexOf(' ');
-  //   return spaceIndex === -1 ? str : str.substr(0, spaceIndex);
-  // }
-
-  // function updateUserFullName(documentSnapshot) {
-  //   return documentSnapshot.get('name');
-  // }
-
-  // function updateUserDateOfBirth(documentSnapshot) {
-  //   return documentSnapshot.get('dateOfBirth');
-  // }
-
   function updateUserPhotosUrls(documentSnapshot) {
     return documentSnapshot.get('photoUrls');
   }
@@ -157,18 +141,6 @@ const EditProfileScreen = ({navigation}) => {
         console.log(querySnapshot.data());
         setCurrentUserProfileData(querySnapshot.data());
       });
-
-    // await firestore()
-    //   .collection('profiles')
-    //   .doc(uid)
-    //   .get()
-    //   .then((documentSnapshot) => updateUserFullName(documentSnapshot))
-    //   .then((name) => {
-    //     console.log('full name: ' + name);
-    //     if (name !== undefined && name.length > 0) {
-    //       setFirstName(getFirstWord(name));
-    //     }
-    //   });
 
     await firestore()
       .collection('profiles')

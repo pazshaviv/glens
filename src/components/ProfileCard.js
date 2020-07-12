@@ -42,7 +42,6 @@ const ProfileCard = ({card}) => {
   }
 
   const uri = photoUrls[photoIndex];
-  // console.log('uri: ' + uri);
   const indicatorWidth = INDICATORS_WIDTH / photosAmount - 10;
 
   return (
